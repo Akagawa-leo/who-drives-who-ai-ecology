@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>谁在驱动谁 · 人机协作交互测试</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="nav"><a class="brand" href="#"><span class="brand-mark" aria-hidden="true">↗</span>谁在驱动谁</a><div class="nav-actions"><button class="button secondary small" id="presentationSwitch" type="button" aria-pressed="false">开启汇报模式</button><button class="button primary small" data-start>立即测试 <span aria-hidden="true">↗</span></button></div></header>
+  <main class="wrap">
+    <section class="hero">
+      <div><p class="eyebrow">生成式AI协作中的共生边界与人的主体性重构</p><h1>AI多做一步，<br>你还掌握<span>下一步</span>吗？</h1><p class="lead">先看大家的协作趋势，再把自己的经历放进图里。</p><div class="hero-actions"><button class="button primary" data-start>完成问卷，查看我的位置 <span aria-hidden="true">→</span></button><a class="button secondary" href="#explore">先用滑杆体验</a></div><p class="privacy">本地计算，不上传答案</p></div>
+      <aside class="hero-aside"><div class="sample-number"><strong id="count">86</strong><span>份问卷参与汇总</span></div><p>公开版只展示汇总结果，不包含个人答卷分数。</p></aside>
+    </section>
+
+    <section id="presentationSummary" class="presentation-summary" aria-label="汇报核心结论"><div><span class="presentation-number">86</span><span>份筛查后样本</span></div><p>本组样本中，60—80段平均协作状态为81.1分，80—100段为56.0分：<strong>AI介入更多，不一定协作更好。</strong></p></section>
+    <section id="explore" class="workspace" aria-label="协作趋势与滑杆体验">
+      <article class="panel chart-panel">
+        <p class="experience-guide"><strong>从这里开始</strong><span>看趋势 <b>→</b> 调滑杆 <b>→</b> 做问卷</span></p>
+        <div class="panel-heading"><div><h2>AI参与与协作状态</h2></div></div>
+        <div class="legend"><span><i class="legend-line"></i>总体趋势</span><span><i class="legend-diamond"></i>分段均值</span><span><i class="legend-dot demo"></i>滑杆位置</span><span id="testLegend" hidden><i class="legend-dot test"></i>我的得分</span></div>
+        <div id="chartArea" class="chart-area"><svg id="chart" role="img" aria-label="86份问卷的总体趋势、分段均值与个人测试位置"></svg><div id="tooltip" class="tooltip" hidden></div></div>
+        <div class="chart-footer"><span>曲线仅反映本组样本的相关趋势；五区背景为教学示意。</span></div>
+      </article>
+      <aside class="panel control-panel">
+        <h2>沿总体趋势观察</h2><p class="muted">拖动滑杆，查看不同AI介入程度附近的总体趋势值。它不预测你的个人结果。</p>
+        <div class="slider-field"><label for="ai">AI参与程度 <output id="aiValue">70.0</output></label><input id="ai" type="range" min="20" max="100" step="0.1" value="70"><div class="range-label"><span>较少介入</span><span>进入关键环节</span></div></div>
+        <div class="live-score" aria-live="polite"><span>该位置的总体趋势值</span><strong id="demoScore">—<span>/ 100</span></strong><p id="demoReadout">正在计算…</p></div>
+        <button class="button secondary full" id="resetSliders" type="button">恢复演示初始值</button>
+        <div class="control-note"><button class="text-button" data-start>做问卷，查看我的位置 →</button></div>
+      </aside>
+    </section>
+
+    <section id="personalResult" class="panel personal-result" hidden aria-live="polite">
+      <div class="panel-heading"><div><h2>你的问卷位置</h2></div><button class="button secondary small" id="reopenResult">查看完整结果</button></div><div id="inlineScores" class="score-grid"></div><div class="result-interpretation"><strong>和已有样本相比</strong><p id="inlineSummary" class="result-summary"></p></div><div class="result-advice"><strong>下一次可以这样做</strong><ol id="inlineAdvice"></ol></div><div class="result-actions"><button id="loadResult" class="button secondary small">用我的AI介入指数定位</button><button id="clearAndRetest" class="button secondary small" type="button">删除本次测试并重测</button></div>
+    </section>
+
+    <section class="reading-grid">
+      <article><span class="section-number">01</span><h3>这条曲线在说什么？</h3><p>本组样本呈现先升后降的趋势。AI参与最多的一组，平均协作状态并非最高。</p></article>
+      <article><span class="section-number">02</span><h3>共生的边界在哪里？</h3><p>关键在于人能否理解结果、检查依据，并决定下一步如何修改。</p></article>
+    </section>
+
+    <section class="panel ecology-panel"><div class="panel-heading"><div><h2>能承受，不等于最合适</h2></div></div><p class="muted">下图是生态学耐受性的理论示意，上方问卷的五区边界并非实测阈值。</p><div class="theory"><div class="zones"><span>不能耐受</span><span>生理耐受范围</span><span>最适区</span><span>生理耐受范围</span><span>不能耐受</span></div><svg viewBox="0 0 1000 150" preserveAspectRatio="none" aria-label="五区耐受性理论示意"><path d="M0 143 C110 142 200 126 280 88 C360 45 425 12 500 12 C575 12 640 45 720 88 C800 126 890 142 1000 143" fill="none" stroke="#55786b" stroke-width="4"/></svg></div><div class="theory-axis"><span>环境因子强度低</span><span>环境因子强度高 →</span></div></section>
+<details class="method"><summary>数据与计算说明</summary><p>本组共收集100份问卷，按完成时间少于30秒的预设规则筛去14份，汇总86份。用时筛查不能证明单份答卷无效。公开版仅包含总体平滑趋势、四组均值与样本数量，不包含任何受访者的个人作答、序号或个体分数。</p><p>深蓝线来自本组样本的局部加权线性平滑，平滑比例0.68；滑杆只读取这条既有趋势，不会重新拟合，也不能推断改变AI使用程度会使某个人的分数升降。四组均值使用原始分段汇总。背景五区依据深蓝线峰值的90%和65%作教学展示，不是经过验证的个人耐受阈值。</p><p>即时测试沿用原问卷计分：X＝六项关键介入均值×20；H自评＝七项主体性均值×20；H情境＝（两项情境答案均值−1）×25；H＝0.75H自评＋0.25H情境；E＝四项资源收益均值×20；Y＝0.65H＋0.35E。情境题A—E按1—5计分。紫色点只表示当前用户的本地测试结果，刷新或重测即可清除，不会提交到网站或加入本组样本。</p></details>
+    <footer>谁在驱动谁 · 环境生态学课程展示</footer>
+  </main>
+
+  <dialog id="quizDialog" aria-labelledby="quizTitle">
+    <div class="dialog-header"><div><h2 id="quizTitle">生成式AI协作共生边界调查问卷</h2></div><button id="closeQuiz" class="icon-button" aria-label="关闭测试" type="button">×</button></div>
+    <div id="quizBody"><div class="progress-meta"><span id="stepLabel"></span><span id="answeredCount"></span></div><progress id="quizProgress" max="22" value="0" aria-label="已完成作答项"></progress><div id="stepContent"></div><p id="validation" class="validation" role="alert" hidden></p></div>
+    <div id="resultBody" hidden></div>
+    <div id="quizFooter" class="dialog-footer"><button id="prevStep" class="button secondary" type="button">上一步</button><button id="nextStep" class="button primary" type="button">下一步 →</button></div>
+  </dialog>
+</body>
+</html>
+
